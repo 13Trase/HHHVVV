@@ -649,6 +649,7 @@ if (whatsappBtn) {
 
 
     // Обработчик для предотвращения "растягивания" страницы на мобильных
+    // Обработчик для предотвращения "растягивания" страницы на мобильных
     document.addEventListener('touchmove', function(e) {
         if (window.innerWidth <= 768) {
             // Разрешаем прокрутку только внутри excursion-details
