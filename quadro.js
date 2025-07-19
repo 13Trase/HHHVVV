@@ -484,16 +484,15 @@ function setLanguage(lang) {
     }
 
     // ==================== Предотвращение растягивания страницы ====================
+    // Обработчик для предотвращения "растягивания" страницы на мобильных
     document.addEventListener('touchmove', function(e) {
-        if (window.innerWidth <= 768 && e.touches.length === 1) {
-            const touch = e.touches[0];
-            const elements = document.elementsFromPoint(touch.pageX, touch.pageY);
-            const isInGallery = elements.some(el => 
-                el.classList.contains('thumbnail-container') || 
-                el.closest('.thumbnail-container')
-            );
+        if (window.innerWidth <= 768) {
+            // Разрешаем прокрутку только внутри excursion-details
+            const target = e.target;
+            const isScrollable = target.closest('.excursion-details') || 
+                               target.closest('.modal_content');
             
-            if (!isInGallery) {
+            if (!isScrollable) {
                 e.preventDefault();
             }
         }
